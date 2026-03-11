@@ -1,0 +1,201 @@
+---
+// Navbar.astro
+// Component Script Section (Frontmatter)
+// Nav links here as an array with typescript interface for better maintainability
+
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+const navLinks: NavLink[] = [
+  { label: "Home", href: "/" },
+  { label: "Recipes", href: "/recipes" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+---
+
+<!-- Component Template Section -->
+<nav class="navbar">
+  <div class="navbar__container">
+    <!-- Brand Identity -->
+    <a href="/" class="navbar__logo"> 🍴 TastyBites </a>
+
+    <!-- Navigation Links -->
+    <ul class="navbar__links" id="nav-links">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a href={link.href} class="navbar__link">
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- CTA Button -->
+    <a href="/subscribe" class="navbar__cta">Subscribe</a>
+
+    <!-- Hamburger Button (mobile) -->
+    <button
+      class="navbar__hamburger"
+      id="hamburger-btn"
+      aria-label="Toggle menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Vanilla JS Interactivity -->
+<script>
+  const hamburgerBtn: HTMLElement | null =
+    document.getElementById("hamburger-btn");
+  const navLinks: HTMLElement | null = document.getElementById("nav-links");
+
+  hamburgerBtn?.addEventListener("click", () => {
+    // Toggle open class on both elements
+    navLinks?.classList.toggle("navbar__links--open");
+    hamburgerBtn?.classList.toggle("navbar__hamburger--open");
+  });
+</script>
+
+<!-- Styling -->
+<style>
+  /* ---- Base Navbar ---- */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #fff;
+    border-bottom: 2px solid #f0e6d3;
+    font-family: "Georgia", serif;
+  }
+
+  .navbar__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* ---- Logo ---- */
+  .navbar__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #b5451b;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+
+  .navbar__logo:hover {
+    color: #d4622e;
+  }
+
+  /* ---- Nav Links ---- */
+  .navbar__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .navbar__link {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+  }
+
+  .navbar__link:hover {
+    color: #b5451b;
+  }
+
+  /* ---- CTA Button ---- */
+  .navbar__cta {
+    background-color: #b5451b;
+    color: #fff;
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .navbar__cta:hover {
+    background-color: #d4622e;
+  }
+
+  /* ---- Hamburger Button ---- */
+  .navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .navbar__hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: #333;
+    transition: all 0.3s ease;
+  }
+
+  /* Hamburger open state - animates into X */
+  .navbar__hamburger--open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .navbar__hamburger--open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__hamburger--open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ---- Mobile Responsive ---- */
+  @media (max-width: 768px) {
+    .navbar__hamburger {
+      display: flex;
+    }
+
+    .navbar__cta {
+      display: none;
+    }
+
+    .navbar__links {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #fff;
+      border-top: 1px solid #f0e6d3;
+      padding: 1rem 2rem;
+    }
+
+    .navbar__links--open {
+      display: flex;
+    }
+
+    .navbar__link {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f0e6d3;
+      display: block;
+    }
+  }
+</style>
