@@ -3,10 +3,7 @@
 // Component Script Section (Frontmatter)
 // Nav links here as an array with typescript interface for better maintainability
 
-interface NavLink {
-  label: string;
-  href: string;
-}
+import type { NavLink } from "../types/nav-comp-types";
 
 const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
