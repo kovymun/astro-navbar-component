@@ -1,12 +1,17 @@
 ---
 import Navbar from "../components/Navbar.astro";
+import { Font } from "astro:assets";
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>TastyBites</title>
+    <Font
+      cssVariable="--font-barlow"
+      preload={[{ weight: 400, style: "normal" }]}
+    />
+    <title>Tasty Bites</title>
   </head>
   <body>
     <Navbar />
