@@ -1,6 +1,6 @@
 ## Astro Navbar Component Template
 
-This micro project serves as a ready-to-use template for building a responsive navigation bar on the Astro platform. Rather than being part of a larger application, it is intentionally scoped to a single component, allowing developers to study, reuse, and adapt it without the complexity of a full project setup. Built with Astro.js, TypeScript, and vanilla CSS, it demonstrates core Astro concepts including component architecture, scoped styling, and performance conscious development in a focused and digestible way.
+> This micro project serves as a ready-to-use template for building a responsive navigation bar on the Astro platform. Rather than being part of a larger application, it is intentionally scoped to a single component, allowing developers to study, reuse, and adapt it without the complexity of a full project setup. Built with Astro.js, TypeScript, and vanilla CSS, it demonstrates core Astro concepts including component architecture, scoped styling, and performance conscious development in a focused and digestible way.
 
 ---
 
@@ -58,6 +58,8 @@ Sticky navbar with mobile hamburger toggle.
 2. Navigate into the project: `cd astro-navbar-component`
 3. Install dependencies: `npm install` OR `npm i`
 4. Start development server: `npm run dev`
+5. Build for Production: `npm run build`
+6. Preview Production Build: `npm run preview`
 
 ---
 
